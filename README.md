@@ -26,7 +26,7 @@ This is a **learning lab**, not a production infrastructure repository.
 ---
 
 ## 📁 Repository Structure
-
+```bash
 aws-cli-automation/
 ├─ ec2/ # EC2 automation and inspection scripts
 ├─ s3/ # S3 read-only and safe utility scripts
@@ -34,7 +34,7 @@ aws-cli-automation/
 ├─ vpc/ # VPC information and analysis scripts
 ├─ LICENSE
 └─ README.md
-
+```
 
 Each directory contains scripts scoped to **one AWS service**.
 
