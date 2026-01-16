@@ -1,14 +1,52 @@
+# aws-cli-automation
 
-Each folder contains **small, focused scripts** related to a single AWS service.
+Practical AWS CLI automation scripts built with a **security-first, cost-aware, and beginner-friendly** approach.
+
+This repository is maintained by **AWS Ops Labs** and focuses on small, reviewable cloud automation tasks that reflect real DevOps workflows without production risk.
+
+---
+
+## 🎯 Why This Repository Exists
+
+Most beginners jump straight into complex cloud setups and get burned by:
+- Hidden AWS costs
+- Security misconfigurations
+- Overengineered examples
+
+This repository exists to fix that.
+
+We provide:
+- Small, focused AWS CLI scripts
+- Safe and mostly read-only operations
+- Clear contribution boundaries
+- Fast and honest reviews
+
+This is a **learning lab**, not a production infrastructure repository.
+
+---
+
+## 📁 Repository Structure
+
+aws-cli-automation/
+├─ ec2/ # EC2 automation and inspection scripts
+├─ s3/ # S3 read-only and safe utility scripts
+├─ iam/ # IAM inspection scripts (no destructive actions)
+├─ vpc/ # VPC information and analysis scripts
+├─ LICENSE
+└─ README.md
+
+
+Each directory contains scripts scoped to **one AWS service**.
 
 ---
 
 ## ✅ What Belongs Here
 
 - AWS CLI–based scripts (Bash or Python)
-- Free-tier–safe automation
+- Free-tier–safe examples
 - Scripts with clear usage instructions
-- Examples that are easy to review and understand
+- Reversible or read-only actions
+- Code that is easy to review and understand
 
 ---
 
@@ -16,11 +54,11 @@ Each folder contains **small, focused scripts** related to a single AWS service.
 
 - Hardcoded AWS credentials
 - Production infrastructure setups
-- Large, complex frameworks
-- Paid-service–heavy workflows
-- Copy-pasted scripts without explanation
+- Terraform, CloudFormation, or SDK-heavy projects
+- Scripts that can silently incur costs
+- Copy-pasted code without explanation
 
-If it’s risky, expensive, or unclear — it doesn’t belong here.
+If it’s risky, unclear, or expensive — it will be closed.
 
 ---
 
@@ -28,59 +66,23 @@ If it’s risky, expensive, or unclear — it doesn’t belong here.
 
 These scripts are **examples only**.
 
-- Never include real AWS access keys in code
-- Always review AWS pricing before running scripts
-- Prefer read-only or reversible actions
-- Contributors are responsible for understanding what a script does before execution
+- Never include AWS access keys in code
+- Use IAM roles or local AWS CLI configuration
+- Always review AWS pricing before execution
+- Prefer read-only or reversible operations
 
-Unsafe scripts will be closed immediately.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from everyone, but we maintain **strict quality and safety standards**.
-
-Before opening a pull request:
-- Read [`CONTRIBUTING.md`](.github/CONTRIBUTING.md)
-- Make sure your change is small and well-scoped
-- Include a clear explanation of *what* and *why*
-
-Pull requests that ignore guidelines may be closed without revision.
+Unsafe contributions are rejected immediately.
 
 ---
 
-## 🏷️ Issue Labels
+## 🚀 Getting Started
 
-We use labels to keep contributions organized:
-- `good first issue` – Beginner-friendly tasks
-- `beginner` – Low-complexity contributions
-- `needs review` – Awaiting maintainer feedback
-- `security` – Security-sensitive changes
+### Prerequisites
+- AWS CLI installed
+- AWS CLI configured (`aws configure`)
+- Basic understanding of AWS services
 
-Check issues before starting work.
-
----
-
-## 📌 Review Policy
-
-- PRs are reviewed as quickly as possible (usually within 48 hours)
-- Rejection always includes a reason
-- Silence is avoided — feedback is guaranteed
-
-We value clarity over speed and quality over quantity.
-
----
-
-## 📄 License
-
-This project is released under the **MIT License**.
-
-You are free to use, modify, and share the code with attribution.
-
----
-
-## 🚀 Maintained By
-
-**AWS Ops Labs**  
-Open cloud automation labs focused on learning, safety, and clean DevOps practices.
+### Example
+```bash
+cd ec2
+./start-stop-instances.sh start i-1234567890abcdef0
