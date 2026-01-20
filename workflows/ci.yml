@@ -1,0 +1,44 @@
+name: CI - Validate AWS Automation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck yamllint
+          pip install ansible ansible-lint
+
+      - name: Shell script linting
+        run: |
+          find . -type f -name "*.sh" -exec shellcheck {} +
+
+      - name: YAML linting
+        run: |
+          yamllint .
+
+      - name: Ansible lint (if ansible exists)
+        run: |
+          if ls **/*.yml | grep -q ansible; then
+            ansible-lint .
+          else
+            echo "No Ansible playbooks detected"
+          fi
+
+      - name: AWS CLI install & version check
+        run: |
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+          unzip awscliv2.zip
+          sudo ./aws/install
+          aws --version
